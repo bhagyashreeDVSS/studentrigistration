@@ -1,0 +1,37 @@
+
+
+<div class="w-100 d-flex justify-content-start align-items-center" *ngFor="let button of actionbutton">
+  <button id=button mat-icon-button (click)="page1(button)">
+   {{button}}
+  </button>
+</div>
+
+<div class="main">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Roll.No</th>
+        <th scope="col">10Th %</th>
+        <th scope="col">12Th %</th>
+        <th scope="col">Graduation</th>
+        <th scope="col">Phone.no</th>
+        <th scope="col">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of arrays; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <!-- <td>{{s.id + 1}}</td> -->
+        <td>{{item.firstname}}</td>
+        <td>{{item.lastname}}</td>
+        <td>{{item.rollno}}</td>
+        <td>{{item.tenth}}</td>
+        <td>{{item.twelth}}</td>
+        <td>{{item.graduation}}</td>
+        <td>{{item.phoneno}}</td>
+        <td>{{item.address}}</td>
+
+      </tr>

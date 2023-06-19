@@ -1,0 +1,152 @@
+<div class="main">
+<div class="heading">
+  <h1>Student Registration</h1>
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="order()" >
+  <label for="Name">Firstname: <br>
+    <input type="text" name="text" placeholder="enter your FirstName" id="name" formControlName="firstname">
+    <span style="color: red;" *ngIf="firstname && firstname.invalid && firstname.touched">Enter your valid
+      Firstname</span>
+  </label>
+  <br>
+  <label for="Name">Lastname: <br>
+    <input type="text" name="text" placeholder="enter your LastName" id="name" formControlName="lastname">
+    <span style="color: rgb(163, 38, 38);" *ngIf="lastname && lastname.invalid && lastname.touched">Enter your valid Lastname</span>
+  </label>
+  <br>
+  <label for="Name">Roll.No: <br>
+    <input type="number" name="text" placeholder="enter your Roll.No" id="name" formControlName="rollno">
+    <span style="color: red;" *ngIf="rollno && rollno.invalid && rollno.touched">Enter your valid Roll.no</span>
+  </label>
+  <br>
+  <label for="Name">10th Percentage: <br>
+    <input type="number" name="text" placeholder="enter your 10th Percentage" id="name" formControlName="tenth">
+    <span style="color: red;" *ngIf="tenth && tenth.invalid && tenth.touched">Enter your valid 10th Percentage</span>
+  </label>
+  <br>
+  <label for="Name">12th Percentage:<br>
+    <input type="number" name="text" placeholder="enter your 12th Percentage" id="name" formControlName="twelth">
+    <span style="color: red;" *ngIf="twelth && twelth.invalid && twelth.touched">Enter your valid 12th Percentage</span>
+  </label>
+  <br>
+  <label for="Name">Graduation Percentage: <br>
+    <input type="number" name="text" placeholder="enter your Graduation Percentage" id="name"
+      formControlName="graduation">
+    <span style="color: red;" *ngIf="graduation && graduation.invalid && graduation.touched">Enter your valid Graduation
+      Percentage</span>
+  </label>
+  <br>
+  <label for="Name">Phoneno: <br>
+    <input type="number" name="text" placeholder="enter your Phoneno " id="name"
+      formControlName="phoneno">
+    <span style="color: red;" *ngIf="phoneno && phoneno.invalid && phoneno.touched">Enter your valid phoneno</span>
+  </label>
+  <br>
+
+  <label for="Name">Address: <br>
+    <input type="text" name="text" placeholder="enter your address" id="name" formControlName="address">
+    <span style="color: red;" *ngIf="address && address.invalid && address.touched">Enter your valid address</span>
+  </label>
+  <br>
+
+
+  <button type="submit" *ngIf="!isfromsubmit" >Submit</button>
+  <button type="submit" *ngIf="isfromsubmit" (click)="update()" >Update</button>
+
+</form>
+<button (click)="sort()">Order By Roll.no</button>
+<button (click)="sortd()">Order By Roll.no descending</button>
+<button (click)="fdata()">get</button>
+<button [routerLink]="'/data'">page</button>
+
+
+
+<div class="main">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Roll.No</th>
+        <th scope="col">10Th %</th>
+        <th scope="col">12Th %</th>
+        <th scope="col">Graduation</th>
+        <th scope="col">Phone.no</th>
+        <th scope="col">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of entries; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <!-- <td>{{s.id + 1}}</td> -->
+        <td>{{s.firstname}}</td>
+        <td>{{s.lastname}}</td>
+        <td>{{s.rollno}}</td>
+        <td>{{s.tenth}}</td>
+        <td>{{s.twelth}}</td>
+        <td>{{s.graduation}}</td>
+        <td>{{s.phoneno}}</td>
+        <td>{{s.address}}</td>
+        <td><button (click)="edit(s)" >Edit</button></td>
+        <!-- <td><button type="button" (click)="update()">update</button></td> -->
+        <td><button (click)="deleteEntry(i)">Delete</button></td>
+      </tr>
+
+      <br>
+      <br>
+
+      <div *ngFor="let item of pagination" >
+        {{item | json}}
+
+      </div>
+
+      <div class="w-100 d-flex justify-content-start align-items-center" *ngFor="let button of actionbutton">
+        <button id=button mat-icon-button (click)="page1(button)">
+         {{button}}
+        </button>
+      </div>
+
+   <div class="main">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">FirstName</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Roll.No</th>
+          <th scope="col">10Th %</th>
+          <th scope="col">12Th %</th>
+          <th scope="col">Graduation</th>
+          <th scope="col">Phone.no</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of arrays; let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <!-- <td>{{s.id + 1}}</td> -->
+          <td>{{item.firstname}}</td>
+          <td>{{item.lastname}}</td>
+          <td>{{item.rollno}}</td>
+          <td>{{item.tenth}}</td>
+          <td>{{item.twelth}}</td>
+          <td>{{item.graduation}}</td>
+          <td>{{item.phoneno}}</td>
+          <td>{{item.address}}</td>
+
+        </tr>
+ <!-- <td>{{item.Name}}</td>
+       <td>{{item.mobilenumber}}</td> -->
+
+      <!-- <ng-container *ngFor="let control of pageNumber; let i = index">
+        <button id="main" >
+          <p id=1></p>
+        abcd
+        </button>
+        <button >aaaaaaaa</button>
+
+      </ng-container>
+      <button (click)="page()">
+        call listing
+      </button> -->
